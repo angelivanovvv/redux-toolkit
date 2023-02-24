@@ -5,7 +5,7 @@ import PostAuthor from "./PostAuthor";
 import TimeAgo from "./TimeAgo";
 import ReactionButtons from "./ReactionButtons";
 
-import { selectPostById } from "./postsSliceEA";
+import { selectPostById } from "./postsSliceRTKQ";
 
 const PostsExcerpt = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));

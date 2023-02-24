@@ -12,7 +12,7 @@ import UsersList from "./features/users/UsersList";
 import User from "./features/users/User";
 
 import { fetchUsers } from "./features/users/userService";
-import { fetchPosts } from "./features/posts/postService";
+import { extendedApiSlice } from "./features/posts/postsSliceRTKQ";
 
 import { store } from "./store/store";
 
@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     //TODO: Render two times - check it.
     store.dispatch(fetchUsers());
-    store.dispatch(fetchPosts());
+    store.dispatch(extendedApiSlice.endpoints.getPosts.initiate());
   }, []);
 
   return (

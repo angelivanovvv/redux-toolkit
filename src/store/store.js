@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createBrowserHistory } from "history";
 
-import postsReducer from "../features/posts/postsSliceEA";
+import { apiSlice } from "../features/api/apiSlice";
+
 import usersReducer from "../features/users/usersSliceEA";
 import counterReducer from "../features/counter/counterSlice";
 
@@ -9,9 +10,10 @@ export const history = createBrowserHistory();
 
 export const store = configureStore({
   reducer: {
-    posts: postsReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
     users: usersReducer,
     counter: counterReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
 });
